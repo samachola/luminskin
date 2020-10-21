@@ -14,5 +14,6 @@ export const PRODUCTS = ($priceCurrency) => gql`
 			image_url
 			price (currency: USD)
 		}
+		currency
 	}
 `;
