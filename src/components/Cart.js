@@ -36,11 +36,6 @@ const Cart = ({ shoppingCart, setShoppingCart, showCart, setShowCart, currency, 
 		const products = shoppingCart.filter(product => product.id !== id);
 		setShoppingCart(products);
 	}
-
-
-	const onChangeCurrency = (value) => {
-		console.log('value');
-	}
 	
 	return (
 		<div className="cart">
@@ -52,7 +47,8 @@ const Cart = ({ shoppingCart, setShoppingCart, showCart, setShowCart, currency, 
 
 				<div className="currency">
 					<select name="currency" onChange={(event) => setCurrency(event.target.value)}>
-						{currencies.map((value, index) => <option key={index} value={value} selected={value === currency}>{value}</option>)}
+						<option defaultValue>{currency}</option>
+						{currencies.map((value, index) => <option key={index} value={value}>{value}</option>)}
 					</select>
 				</div>
 
