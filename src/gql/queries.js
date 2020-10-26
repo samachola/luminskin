@@ -6,13 +6,13 @@ export const CURRENCIES = gql`
   }
 `;
 
-export const PRODUCTS = ($priceCurrency) => gql`
-	query GetProducts {
+export const PRODUCTS = gql`
+	query Products($currency: Currency) {
 		products {
 			id
 			title
 			image_url
-			price (currency: USD)
+			price(currency: $currency)
 		}
 		currency
 	}

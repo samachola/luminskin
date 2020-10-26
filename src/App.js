@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, gql } from '@apollo/client';
 import { Animated } from 'react-animated-css';
 import { PRODUCTS } from './gql/queries';
 import Cart from './components/Cart';
@@ -12,12 +12,13 @@ function App() {
   const [currency, setCurrency] = useState('USD');
   const [currencies, setCurrencies] = useState([]);
 
-
-  const { loading, error, data } = useQuery(PRODUCTS(currency));
+  const { loading, error, data } = useQuery(PRODUCTS, {variables: {currency: currency}});
 
   useEffect(() => {
+    console.log(data);
     if (data) setCurrencies(data.currency);
   })
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
